@@ -6,7 +6,7 @@ INC = include
 SRCS = $(wildcard $(SRC)/*.c)
 OBJS = $(patsubst $(SRC)/%.c, $(OBJ)/%.o, $(SRCS))
 
-CC = gcc
+CC = clang
 CFLAGS = -g -Wall -O -std=c11 -I$(INC) 
 LDLIBS = -lm
 RM = $(BIN)/main $(OBJ)/*.o *.png
@@ -16,7 +16,7 @@ RM = $(BIN)/main $(OBJ)/*.o *.png
 default: test.png
 
 test.png: out.txt
-	poetry run python main.py
+	python main.py
 
 out.txt : $(BIN)/main
 	./$^ > $@
